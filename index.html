@@ -207,6 +207,23 @@
             margin-top: 10px;
             min-height: 20px;
         }
+
+        /* Új stílusok a mód kiválasztóhoz */
+        .mode-select {
+            position: relative;
+        }
+        
+        .mode-info {
+            font-size: 12px;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+        
+        .mode-risky { color: #ef4444; }
+        .mode-safe { color: #22c55e; }
+        .mode-ultrasafe { color: #3b82f6; }
+        .mode-megasafe { color: #f59e0b; }
     </style>
 </head>
 <body>
@@ -217,12 +234,20 @@
                 <label for="startAmount">Kezdőérték (Ft):</label>
                 <input type="number" id="startAmount" required min="100">
             </div>
-            <div class="form-group">
+            <div class="form-group mode-select">
                 <label for="mode">Mód:</label>
                 <select id="mode" required>
-                    <option value="safe">Safe (7 bukás)</option>
                     <option value="risky">Risky (6 bukás)</option>
+                    <option value="safe" selected>Safe (7 bukás)</option>
+                    <option value="ultrasafe">Ultra Safe (8 bukás)</option>
+                    <option value="megasafe">Mega Safe (9 bukás)</option>
                 </select>
+                <div class="mode-info">
+                    <span class="mode-risky">Risky: Nagyobb tétek, nagyobb kockázat</span><br>
+                    <span class="mode-safe">Safe: Kiegyensúlyozott biztonság</span><br>
+                    <span class="mode-ultrasafe">Ultra Safe: Extra biztonsági tartalék</span><br>
+                    <span class="mode-megasafe">Mega Safe: Maximális védelem</span>
+                </div>
             </div>
             <button type="submit">Számolás</button>
         </form>

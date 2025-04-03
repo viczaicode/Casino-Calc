@@ -4,10 +4,20 @@ export class BettingCalculator {
     constructor(startAmount, mode) {
         this.startAmount = startAmount;
         this.mode = mode;
-        this.maxLosses = mode === 'safe' ? 7 : 6;
+        this.maxLosses = this.getMaxLossesByMode(mode);
         this.minBet = 100;
         this.maxBet = 1000;
         this.betStep = 50;
+    }
+
+    getMaxLossesByMode(mode) {
+        const modes = {
+            'risky': 6,
+            'safe': 7,
+            'ultrasafe': 8,
+            'megasafe': 9
+        };
+        return modes[mode] || 7; // alapértelmezett: safe mód
     }
 
     generatePossibleBets() {
